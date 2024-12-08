@@ -1,14 +1,14 @@
 proxy-providers:
   AKUN1:
-    type: file
-    path: "./proxy_provider/Akun/AKUN1.yaml"
+    type: http
+    path: "https://raw.githubusercontent.com/ElysianWhirl/oc-config/refs/heads/main/proxy_provider/AKUN1.yaml"
     health-check:
       enable: true
       url: 'http://www.gstatic.com/generate_204'
       interval: 300
   AKUN2:
-    type: file
-    path: "./proxy_provider/Akun/AKUN2.yaml"
+    type: http
+    path: "https://raw.githubusercontent.com/ElysianWhirl/oc-config/refs/heads/main/proxy_provider/AKUN2.yaml"
     health-check:
       enable: true
       url: 'http://www.gstatic.com/generate_204'
@@ -29,6 +29,14 @@ proxy-groups:
   - AKUN2
   url: 'http://cp.cloudflare.com/generate_204'
   interval: '300'
+- name: Relay Proxy
+  type: relay
+  disable-udp: false
+  proxies:
+  - AKUN1
+  - AKUN2
+  url: 'http://cp.cloudflare.com/generate_204'
+  interval: '300'
 - name: Home 🌐
   type: select
   disable-udp: false
@@ -38,6 +46,7 @@ proxy-groups:
   type: select
   disable-udp: false
   proxies:
+  - Relay Proxy
   - AKUN2
   url: 'http://www.gstatic.com/generate_204'
   interval: '300'
@@ -52,13 +61,13 @@ proxy-groups:
 #-------------------------------------------------#
 rule-providers:
   blockhc:
-    type: file
+    type: http
     behavior: classical
-    path: ./rule_provider/blockhc.yaml
+    path: "https://raw.githubusercontent.com/ElysianWhirl/oc-config/refs/heads/main/rule_provider/blockhc.yaml"
   Kolopureip:
-    type: file
+    type: http
     behavior: classical
-    path: ./rule_provider/Kolopureip.yaml
+    path: "https://raw.githubusercontent.com/ElysianWhirl/oc-config/refs/heads/main/rule_provider/Kolopureip.yaml"
 
 rules:
 - RULE-SET,blockhc,BLOCK HC
