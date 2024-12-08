@@ -1,1 +1,29 @@
 proxies:
+  - name: FR-195.154.169.198-0511
+    server: 195.154.169.198
+    port: 989
+    type: ss
+    cipher: aes-256-cfb
+    password: f8f7aCzcPKbsF8p3
+    udp: true
+  - name: US-184.170.241.194-0471
+    server: 184.170.241.194
+    port: 443
+    type: ss
+    cipher: aes-128-cfb
+    password: shadowsocks
+    udp: true
+  - name: GB-212.102.47.132-0474
+    server: 212.102.47.132
+    port: 443
+    type: ss
+    cipher: aes-128-gcm
+    password: shadowsocks
+    udp: true
+  - name: US-156.146.38.170-0477
+    server: 156.146.38.170
+    port: 443
+    type: ss
+    cipher: aes-128-gcm
+    password: shadowsocks
+    udp: true
