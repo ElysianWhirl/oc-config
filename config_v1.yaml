@@ -1,0 +1,67 @@
+proxy-providers:
+  AKUN1:
+    type: file
+    path: "./proxy_provider/Akun/AKUN1.yaml"
+    health-check:
+      enable: true
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+  AKUN2:
+    type: file
+    path: "./proxy_provider/Akun/AKUN2.yaml"
+    health-check:
+      enable: true
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+      
+proxy-groups:
+- name: AKUN1
+  type: select
+  disable-udp: false
+  use:
+  - AKUN1
+  url: 'http://cp.cloudflare.com/generate_204'
+  interval: '300'
+- name: AKUN2
+  type: select
+  disable-udp: false
+  use:
+  - AKUN2
+  url: 'http://cp.cloudflare.com/generate_204'
+  interval: '300'
+- name: Home 🌐
+  type: select
+  disable-udp: false
+  proxies:
+  - AKUN1
+- name: Kolo Pure IP
+  type: select
+  disable-udp: false
+  proxies:
+  - AKUN2
+  url: 'http://www.gstatic.com/generate_204'
+  interval: '300'
+- name: BLOCK HC
+  type: select
+  disable-udp: false
+  proxies:
+  - REJECT
+  - Home 🌐
+  url: 'http://www.gstatic.com/generate_204'
+  interval: '300'
+#-------------------------------------------------#
+rule-providers:
+  blockhc:
+    type: file
+    behavior: classical
+    path: ./rule_provider/blockhc.yaml
+  Kolopureip:
+    type: file
+    behavior: classical
+    path: ./rule_provider/Kolopureip.yaml
+
+rules:
+- RULE-SET,blockhc,BLOCK HC
+- RULE-SET,Kolopureip,Kolo Pure IP
+- MATCH,Home 🌐
+  
