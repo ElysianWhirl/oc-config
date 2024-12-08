@@ -1,0 +1,6 @@
+payload:
+  # > ddos
+  - DOMAIN-SUFFIX,check.ddos-guard.net
+  - DOMAIN-KEYWORD,ddos
+  - DOMAIN-KEYWORD,ddos-guard
+  - DOMAIN-KEYWORD,kolotibablo
