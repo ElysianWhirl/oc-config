@@ -1,1 +1,16 @@
 proxies:
+  - name: ryzner.pages.dev
+    server: 104.18.214.235
+    port: 443
+    type: vless
+    uuid: 6cd46058-91f2-4208-b8b9-53e705f49ff9
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: ryzner.pages.dev
+    network: ws
+    ws-opts:
+      path: /?ed=2048
+      headers:
+        Host: ryzner.pages.dev
+    udp: true
