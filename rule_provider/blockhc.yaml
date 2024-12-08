@@ -1,0 +1,6 @@
+payload:
+  # > Captcha
+  - DOMAIN-SUFFIX,servicos.receita.fazenda.gov.br
+  - DOMAIN-SUFFIX,wcca.wicourts.gov
+  - DOMAIN-SUFFIX,www.eneldistribuicao.com.br
+  - DOMAIN-SUFFIX,hcaptcha.com
